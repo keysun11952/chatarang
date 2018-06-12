@@ -3,6 +3,14 @@ import ChatHeader from './ChatHeader.js'
 import MessageList from './MessageList.js'
 import MessageForm from './MessageForm.js'
 
+const styles = {
+    chat: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+    },
+}
+
 class Chat extends Component {
     constructor() {
         super()
@@ -25,8 +33,8 @@ class Chat extends Component {
     addMessage = (body) => {
         const messages = [...this.state.messages]
         messages.push({
-            id: Date.now(), 
-            username: this.props.user.username, 
+            id: Date.now(),
+            username: this.props.user.username,
             body: body,
         })
         this.setState({ messages })
@@ -34,10 +42,10 @@ class Chat extends Component {
 
     render() {
         return (
-            <div className="Chat">
+            <div className="Chat" style={styles.chat}>
                 <ChatHeader />
                 <MessageList messages={this.state.messages} />
-                <MessageForm addMessage={this.addMessage}/>
+                <MessageForm addMessage={this.addMessage} />
             </div>
         )
     }
