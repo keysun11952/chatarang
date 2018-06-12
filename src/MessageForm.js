@@ -17,7 +17,7 @@ class MessageForm extends Component {
     render() {
         return (
             <form className="MessageForm" style={styles.messageForm} onSubmit={this.handleSubmit}>
-                <div class="chatIcon" style={styles.chatIcon}><i class="fas fa-comment-alt"></i></div>
+                <div className="chatIcon" style={styles.chatIcon}><i className="fas fa-comment-alt"></i></div>
                 <input type="text" name="body" placeholder="Type a message ... "
                     value={this.state.body} onChange={this.handleChange} style={styles.input} />
                 <button type="submit" style={styles.button}>Send</button>
