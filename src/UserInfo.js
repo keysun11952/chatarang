@@ -21,6 +21,10 @@ const styles = {
     },
     avatar: {
         marginRight: '0.5rem',
+        height: '40px',
+        width: '40px',
+        fontSize: '1rem',
+        borderRadius: '20px',
     },
     user: {
         flex: 1,
