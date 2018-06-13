@@ -1,42 +1,38 @@
 import React from 'react'
 
-const UserInfo = (props) => {
-    return (
-        <div className="UserInfo" style={styles.userInfo}>
-            <div className="Avatar" style={styles.avatar}></div>
-            <div className="user" style={styles.user}>{props.user.username}</div>
-            <a style={styles.a} href="#">
-                <i className="fas fa-sign-out-alt"></i>
-            </a>
-        </div>
-    )
+import Avatar from './Avatar'
+import SignOut from './SignOut'
+
+const UserInfo = ({ user, signOut }) => {
+  return (
+    <div
+      className="UserInfo"
+      style={styles.info}
+    >
+      <Avatar user={user} style={styles.avatar} />
+      <div className="user" style={styles.user}>
+        {user.userName}
+      </div>
+      <SignOut signOut={signOut} />
+    </div>
+  )
 }
 
 const styles = {
-    userInfo: {
-        padding: '0 1rem',
-        marginBottom: '1rem',
-        display: 'flex',
-        alignItems: 'center',
-    },
-    avatar: {
-        marginRight: '0.5rem',
-        height: '40px',
-        width: '40px',
-        fontSize: '1rem',
-        borderRadius: '20px',
-    },
-    user: {
-        flex: 1,
-    },
-    a: {
-        border: 0,
-        padding: 0,
-        backgroundColor: 'transparent',
-        color: 'rgba(255, 255, 255, 0.6)',
-        fontSize: '1.2rem',
-        transition: 'color 0.25s ease-out',
-    },
+  info: {
+    marginBottom: '1rem',
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0 1rem',
+  },
+
+  avatar: {
+    marginRight: '0.5rem',
+  },
+
+  user: {
+    flex: 1,
+  },
 }
 
 export default UserInfo

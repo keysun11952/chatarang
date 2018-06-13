@@ -1,54 +1,53 @@
 import React, { Component } from 'react'
-import ChatHeader from './ChatHeader.js'
-import MessageList from './MessageList.js'
-import MessageForm from './MessageForm.js'
 
-const styles = {
-    chat: {
-        flex: 1,
-        display: 'flex',
-        flexDirection: 'column',
-    },
-}
+import ChatHeader from './ChatHeader'
+import MessageList from './MessageList'
+import MessageForm from './MessageForm'
+import base from './base'
 
 class Chat extends Component {
-    constructor() {
-        super()
-        this.state = {
-            messages: [
-                {
-                    id: 1,
-                    username: 'someone',
-                    body: 'chat body 1',
-                },
-                {
-                    id: 2,
-                    username: 'someone else',
-                    body: 'chat body 2',
-                },
-            ]
-        }
-    }
+  constructor() {
+    super()
 
-    addMessage = (body) => {
-        const messages = [...this.state.messages]
-        messages.push({
-            id: Date.now(),
-            username: this.props.user.username,
-            body: body,
-        })
-        this.setState({ messages })
+    this.state = {
+      messages: []
     }
+  }
 
-    render() {
-        return (
-            <div className="Chat" style={styles.chat}>
-                <ChatHeader />
-                <MessageList messages={this.state.messages} />
-                <MessageForm addMessage={this.addMessage} />
-            </div>
-        )
-    }
+  componentDidMount() {
+    base.syncState('messages', {
+      context: this,
+      state: 'messages',
+      asArray: true,
+    })
+  }
+
+  addMessage = (body) => {
+    const messages = [...this.state.messages]
+    messages.push({
+      id: Date.now(),
+      user: this.props.user,
+      body,
+    })
+
+    this.setState({ messages })
+  }
+
+  render() {
+    return (
+      <div className="Chat" style={styles}>
+        <ChatHeader />
+        <MessageList messages={this.state.messages} />
+        <MessageForm addMessage={this.addMessage} />
+      </div>
+    )
+  }
 }
 
-export default Chat;
+const styles = {
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+}
+
+export default Chat
