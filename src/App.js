@@ -1,19 +1,33 @@
 import React, { Component } from 'react'
 import './App.css'
 import Main from './Main.js'
+import SignIn from './SignIn.js'
 
 class App extends Component {
   state = {
     user: {
-      uid: '1234',
-      username: 'keysun11952',
+      uid: 'id',
+      username: '',
     },
+  }
+
+  setUsername = (username) => {
+    const user = this.state.user
+    user.username = username
+    this.setState({ user })
+  }
+
+  greeting = () => {
+    if (this.state.user.username == '')
+      return <SignIn setUsername={this.setUsername} />
+    if (this.state.user.username != '')
+      return <Main user={this.state.user} />
   }
 
   render() {
     return (
       <div className="App">
-        <Main user={this.state.user} />
+        {this.greeting()}
       </div>
     )
   }
