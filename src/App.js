@@ -18,9 +18,9 @@ class App extends Component {
   }
 
   greeting = () => {
-    if (this.state.user.username == '')
+    if (this.state.user.username === '')
       return <SignIn setUsername={this.setUsername} />
-    if (this.state.user.username != '')
+    if (this.state.user.username !== '')
       return <Main user={this.state.user} />
   }
 

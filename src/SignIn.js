@@ -16,13 +16,26 @@ class SignIn extends Component {
 
     render() {
         return (
-            <form className="SignIn" onSubmit={this.handleSubmit}>
-                <input type="text" name="username" placeholder="Username"
+            <form className="SignIn" onSubmit={this.handleSubmit} style={styles.form}>
+                <input type="text" name="username" placeholder="Username" style={styles.input}
                     value={this.state.username} onChange={this.handleChange} />
-                <button type="submit">Send</button>
+                <button type="submit" style={styles.button}>Sign In</button>
             </form>
         )
     }
+}
+
+const styles = {
+    form: {
+        marginLeft: '40vw',
+        marginTop: '20vw',
+    },
+    input: {
+        padding: '1vw 1vw',
+    },
+    button: {
+        padding: '1vw 1vw',
+    },
 }
 
 export default SignIn
