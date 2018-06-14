@@ -6,9 +6,13 @@ import Chat from './Chat'
 class Main extends Component {
   state = {
     room: {
-      name: 'afternoon',
-      description: 'afternoon',
+      name: 's2afternoon',
+      description: 'Ask questions and share code',
     },
+  }
+
+  loadRoom = (room) => {
+    this.setState({ room })
   }
 
   render() {
@@ -17,10 +21,11 @@ class Main extends Component {
         <Sidebar
           user={this.props.user}
           signOut={this.props.signOut}
+          loadRoom={this.loadRoom}
         />
-        <Chat 
-          user={this.props.user} 
-          room={this.state.room} 
+        <Chat
+          user={this.props.user}
+          room={this.state.room}
         />
       </div>
     )
