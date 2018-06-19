@@ -3,6 +3,8 @@ import { StyleSheet, css } from 'aphrodite'
 import { NavLink } from 'react-router-dom'
 
 const RoomLink = ({ room }) => {
+  if (room.description === "private")
+    return null
   return (
     <li className={css(styles.item)}>
       <NavLink
