@@ -34,7 +34,7 @@ class Main extends Component {
 
     const room = this.state.rooms[roomName]
 
-    if (room) {
+    if (room && room.public) {
       this.setState({ room })
     } else {
       this.loadValidRoom()
@@ -43,7 +43,7 @@ class Main extends Component {
 
   loadValidRoom = () => {
     const realRoomName = Object.keys(this.state.rooms).find(
-      roomName => this.state.rooms[roomName]
+      roomName => this.state.rooms[roomName].public
     )
 
     this.props.history.push(`/rooms/${realRoomName}`)
