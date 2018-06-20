@@ -3,15 +3,13 @@ import { StyleSheet, css } from 'aphrodite'
 import { NavLink } from 'react-router-dom'
 
 const RoomLink = ({ room }) => {
-  if (!room.public)
-    return null
   return (
     <li className={css(styles.item)}>
       <NavLink
         to={`/rooms/${room.name}`}
         className={css(styles.link)}
       >
-        {room.name}
+        {room.displayName}
       </NavLink>
     </li>
   )
